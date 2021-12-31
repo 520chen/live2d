@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>live2d</title>
+  <link rel="icon" href="./icon.png">
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    ul {
+      width: 100%;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      width: 150px;
+      padding: 10px 20px;
+      text-align: center;
+      border: 1px solid #ccc;
+      margin: 5px 10px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .active {
+      background-color: pink;
+    }
+    #live2d {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 用于存放Live2d的元素，可自定义 -->
+  <ul class="model">
+    <li class="active">aierdeliqi_5</li>
+    <li>aierdeliqi_4</li>
+    <li>aidang_2</li>
+    <li>aimierbeierding_2</li>
+    <li>banrenma_2</li>
+    <li>beierfasite_2</li>
+    <li>biaoqiang</li>
+    <li>biaoqiang_3</li>
+    <li>bisimai_2</li>
+    <li>chuixue_3</li>
+    <li>dafeng_2</li>
+    <li>deyizhi_3</li>
+    <li>dujiaoshou_4</li>
+    <li>dunkeerke_2</li>
+    <li>genaisennao_2</li>
+    <li>heitaizi_2</li>
+    <li>huangjiafangzhou_3</li>
+    <li>huonululu_3</li>
+    <li>huonululu_5</li>
+    <li>kelifulan_3</li>
+    <li>lafei</li>
+    <li>lafei_4</li>
+    <li>lingbo</li>
+    <li>mingshi</li>
+    <li>ninghai_4</li>
+    <li>pinghai_4</li>
+    <li>qibolin_2</li>
+    <li>shengluyisi_2</li>
+    <li>shengluyisi_3</li>
+    <li>sipeibojue_5</li>
+    <li>taiyuan_2</li>
+    <li>tianlangxing_3</li>
+    <li>tierbici_2</li>
+    <li>xianghe_2</li>
+    <li>xixuegui_4</li>
+    <li>xuefeng</li>
+    <li>yichui_2</li>
+    <li>z23</li>
+    <li>z46_2</li>
+    <li>zhala_2</li>
+  </ul>
+
+  <div id="live2d"></div>
+  <!---- 必需 ---->
+  <script src="https://live2d-3.vercel.app/js/live2dcubismcore.min.js"></script>
+  <script src="https://live2d-3.vercel.app/js/pixi.min.js"></script>
+  <!-- live2dv3.js -->
+  <script src="https://live2d-3.vercel.app/js/live2dv3.min.js"></script>
+  <!------ 加载Live2d模型 ------>
+  <script>
+    function init(model) {
+      var live2d = new l2dViewer({
+        el: document.getElementById('live2d'), // 要添加Live2d的元素, 支持dom选择器和jq选择器
+        basePath: 'https://live2d-3.vercel.app/model', // 模型根目录
+        modelName: model, // 模型名称
+        width:800,
+        height:600
+      })
+    }
+    window.onload = () => {
+      init("aierdeliqi_5");
+      let live2d = document.querySelector("#live2d")
+      let lis = document.querySelectorAll(".model li");
+      for(let i=0; i<lis.length;i++) {
+        lis[i].onclick=function(e){
+          for (let i = 0; i < lis.length; i++){
+            lis[i].className = ''
+          }
+          this.className = 'active';
+          let canvas = document.querySelector("#live2d canvas");
+          live2d.removeChild(canvas)
+          init(e.target.innerText)
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>
