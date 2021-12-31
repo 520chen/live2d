@@ -93,16 +93,16 @@
 
   <div id="live2d"></div>
   <!---- 必需 ---->
-  <script src="https://live2d-3.vercel.app/js/live2dcubismcore.min.js"></script>
-  <script src="https://live2d-3.vercel.app/js/pixi.min.js"></script>
+  <script src="/js/live2dcubismcore.min.js"></script>
+  <script src="/js/pixi.min.js"></script>
   <!-- live2dv3.js -->
-  <script src="https://live2d-3.vercel.app/js/live2dv3.min.js"></script>
+  <script src="/js/live2dv3.min.js"></script>
   <!------ 加载Live2d模型 ------>
   <script>
     function init(model) {
       var live2d = new l2dViewer({
         el: document.getElementById('live2d'), // 要添加Live2d的元素, 支持dom选择器和jq选择器
-        basePath: 'https://live2d-3.vercel.app/model', // 模型根目录
+        basePath: '/model', // 模型根目录
         modelName: model, // 模型名称
         width:800,
         height:600
